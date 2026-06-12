@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Briefcase } from "lucide-react";
+import Tilt from "react-parallax-tilt";
+
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg
@@ -51,7 +53,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-[4.25rem] font-sans font-black tracking-tight text-white mb-5 leading-[1.05] select-none"
+            className="hero-title text-5xl md:text-6xl lg:text-[4.25rem] font-sans font-black tracking-tight text-white mb-5 leading-[1.05] select-none"
           >
             Building <br />
             <span className="font-serif italic font-normal text-gradient-gold pr-4 inline-block">
@@ -145,40 +147,42 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/15 via-transparent to-indigo-500/10 rounded-[2.5rem] blur-3xl pointer-events-none scale-110" />
 
           {/* Card shell */}
-          <div className="relative w-[260px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[340px] md:h-[450px] lg:w-[380px] lg:h-[500px] rounded-[2rem] overflow-visible">
+          <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.03} transitionSpeed={400}>
+            <div className="relative w-[260px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[340px] md:h-[450px] lg:w-[380px] lg:h-[500px] rounded-[2rem] overflow-visible">
 
-            {/* Gold gradient border */}
-            <div className="absolute -inset-[2px] bg-gradient-to-b from-[#D4AF37]/50 via-[#D4AF37]/10 to-transparent rounded-[2rem] z-10 pointer-events-none" />
+              {/* Gold gradient border */}
+              <div className="absolute -inset-[2px] bg-gradient-to-b from-[#D4AF37]/50 via-[#D4AF37]/10 to-transparent rounded-[2rem] z-10 pointer-events-none" />
 
-            {/* Photo frame */}
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-slate-900 z-20 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
-              <Image
-                src="/hero.jpg"
-                alt="Ankita Choudhury – Global Affairs Professional"
-                fill
-                sizes="(max-width: 768px) 300px, 400px"
-                className="object-cover object-top"
-                priority
-              />
-              {/* Bottom gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/75 via-[#020617]/10 to-transparent pointer-events-none" />
+              {/* Photo frame */}
+              <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-slate-900 z-20 shadow-[0_32px_80px_rgba(0,0,0,0.6)]">
+                <Image
+                  src="/hero.jpg"
+                  alt="Ankita Choudhury – Global Affairs Professional"
+                  fill
+                  sizes="(max-width: 768px) 300px, 400px"
+                  className="object-cover object-top"
+                  priority
+                />
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/75 via-[#020617]/10 to-transparent pointer-events-none" />
 
-              {/* Name plate at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 py-5 z-30">
-                <p className="text-white font-bold text-lg leading-tight">Ankita Choudhury</p>
-                <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-widest mt-0.5">
-                  Global Affairs & Int&apos;l Relations
-                </p>
+                {/* Name plate at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 px-6 py-5 z-30">
+                  <p className="text-white font-bold text-lg leading-tight">Ankita Choudhury</p>
+                  <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-widest mt-0.5">
+                    Global Affairs & Int&apos;l Relations
+                  </p>
+                </div>
               </div>
+
+
+
+
+
+
             </div>
+          </Tilt>
 
-
-
-
-
-
-
-          </div>
         </motion.div>
 
       </div>

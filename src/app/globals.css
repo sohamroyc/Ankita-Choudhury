@@ -90,3 +90,19 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Floating 3D Text / Hero Title */
+.hero-title {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  text-shadow:
+    1px 1px 0 #c9a96e,
+    2px 2px 0 #b8956a,
+    3px 3px 0 #a07850;
+  transition: transform 0.3s ease;
+}
+
+.hero-title:hover {
+  transform: rotateX(5deg) rotateY(-3deg);
+}
+
