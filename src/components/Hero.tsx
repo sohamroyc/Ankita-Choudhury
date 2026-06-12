@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin, Briefcase, Users } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Briefcase } from "lucide-react";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg
