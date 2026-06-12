@@ -15,11 +15,6 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const stats = [
-  { label: "LinkedIn Followers", value: "2K+" },
-  { label: "Partner Universities", value: "20+" },
-  { label: "Years Experience", value: "2+" },
-];
 
 export default function Hero() {
   return (
@@ -94,20 +89,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.35 }}
-            className="flex flex-wrap gap-4 mb-10"
-          >
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col items-center bg-slate-900/60 rounded-lg px-4 py-2">
-              <span className="text-sm font-semibold text-slate-100">{s.value}</span>
-              <span className="text-xs text-slate-500 uppercase tracking-wider mt-1">{s.label}</span>
-            </div>
-          ))}
-          </motion.div>
 
           {/* CTA row */}
           <motion.div
