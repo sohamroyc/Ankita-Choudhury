@@ -191,48 +191,11 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* ── Floating badge: Active Globally ── */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute -top-4 -right-4 z-40 flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#020617]/90 backdrop-blur-md border border-[#D4AF37]/30 shadow-xl"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-              <span className="text-[10px] font-bold text-slate-100 uppercase tracking-wider">Active Globally</span>
-            </motion.div>
 
-            {/* ── Floating chip: LinkedIn ── */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.75, duration: 0.5 }}
-              className="absolute -left-6 top-1/3 z-40 flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl hidden sm:flex"
-            >
-              <div className="w-7 h-7 rounded-lg bg-[#0077B5] flex items-center justify-center flex-shrink-0">
-                <LinkedinIcon className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider leading-none">Followers</p>
-                <p className="text-sm font-extrabold text-white leading-tight mt-0.5">2,000+</p>
-              </div>
-            </motion.div>
 
-            {/* ── Floating chip: Focus Areas ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="absolute -bottom-5 -right-4 z-40 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl hidden sm:flex"
-            >
-              <div className="p-2 bg-[#D4AF37]/15 rounded-xl border border-[#D4AF37]/25">
-                <Users className="w-4 h-4 text-[#D4AF37]" />
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider leading-none">Focus Areas</p>
-                <p className="text-[11px] font-semibold text-slate-100 mt-0.5 whitespace-nowrap">Diplomacy · Mobility · Strategy</p>
-              </div>
-            </motion.div>
+
+
+
 
           </div>
         </motion.div>
