@@ -101,19 +101,12 @@ export default function Hero() {
             transition={{ duration: 0.55, delay: 0.35 }}
             className="flex flex-wrap gap-4 mb-10"
           >
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="px-4 py-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-[#D4AF37]/30 transition-colors duration-300"
-              >
-                <span className="block text-xl font-extrabold text-white leading-none mb-0.5">
-                  {s.value}
-                </span>
-                <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
-                  {s.label}
-                </span>
-              </div>
-            ))}
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center bg-slate-900/60 rounded-lg px-4 py-2">
+              <span className="text-sm font-semibold text-slate-100">{s.value}</span>
+              <span className="text-xs text-slate-500 uppercase tracking-wider mt-1">{s.label}</span>
+            </div>
+          ))}
           </motion.div>
 
           {/* CTA row */}
@@ -171,7 +164,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/15 via-transparent to-indigo-500/10 rounded-[2.5rem] blur-3xl pointer-events-none scale-110" />
 
           {/* Card shell */}
-          <div className="relative w-[300px] h-[400px] sm:w-[340px] sm:h-[450px] md:w-[380px] md:h-[500px] rounded-[2rem] overflow-visible">
+          <div className="relative w-[260px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[340px] md:h-[450px] lg:w-[380px] lg:h-[500px] rounded-[2rem] overflow-visible">
 
             {/* Gold gradient border */}
             <div className="absolute -inset-[2px] bg-gradient-to-b from-[#D4AF37]/50 via-[#D4AF37]/10 to-transparent rounded-[2rem] z-10 pointer-events-none" />
@@ -214,7 +207,7 @@ export default function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.75, duration: 0.5 }}
-              className="absolute -left-6 top-1/3 z-40 flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl"
+              className="absolute -left-6 top-1/3 z-40 flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl hidden sm:flex"
             >
               <div className="w-7 h-7 rounded-lg bg-[#0077B5] flex items-center justify-center flex-shrink-0">
                 <LinkedinIcon className="w-4 h-4 text-white" />
@@ -230,7 +223,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.5 }}
-              className="absolute -bottom-5 -right-4 z-40 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl"
+              className="absolute -bottom-5 -right-4 z-40 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#020617]/90 backdrop-blur-md border border-slate-700/80 shadow-xl hidden sm:flex"
             >
               <div className="p-2 bg-[#D4AF37]/15 rounded-xl border border-[#D4AF37]/25">
                 <Users className="w-4 h-4 text-[#D4AF37]" />

@@ -96,7 +96,8 @@ export default function Home() {
           {/* Mobile Menu Toggler button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-[#D4AF37] transition-colors duration-300"
+            className="lg:hidden p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-[#D4AF37] transition-colors duration-300"
+            className="lg:hidden p-4 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-[#D4AF37] transition-colors duration-300"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -105,7 +106,7 @@ export default function Home() {
 
         {/* Mobile Slide-down Drawer Panel */}
         {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-[#020617]/95 border-b border-slate-900 py-6 px-8 flex flex-col gap-4 shadow-2xl backdrop-blur-lg">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-[#020617]/95 border-b border-slate-900 py-6 px-8 flex flex-col gap-4 shadow-2xl backdrop-blur-lg max-h-[80vh] overflow-y-auto">
             {NAV_LINKS.map((link) => {
               const sectionId = link.href.substring(1);
               const isActive = activeSection === sectionId;
@@ -115,7 +116,7 @@ export default function Home() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-xs uppercase tracking-widest font-bold py-2 border-b border-slate-900/60 last:border-0 ${
+                  className={`text-xs sm:text-sm uppercase tracking-widest font-bold py-2 border-b border-slate-900/60 last:border-0 ${
                     isActive ? "text-[#D4AF37]" : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
