@@ -96,7 +96,7 @@ export default function Home() {
           {/* Mobile Menu Toggler button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-[#D4AF37] transition-colors duration-300"
+
             className="lg:hidden p-4 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-[#D4AF37] transition-colors duration-300"
             aria-label="Toggle Navigation Menu"
           >
