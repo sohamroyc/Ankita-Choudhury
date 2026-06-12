@@ -3,42 +3,9 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  Mail, Send, CheckCircle2, MessageSquare,
-  Landmark, User, MailCheck, MapPin, Clock
+  Send, CheckCircle2, MessageSquare,
+  Landmark, User, MailCheck
 } from "lucide-react";
-
-const LinkedinFilled = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-  </svg>
-);
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "ankita.relations@example.com",
-    href: "mailto:ankita.relations@example.com",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10 border-amber-500/20",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Kolkata, West Bengal, India",
-    href: "#",
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/10 border-emerald-500/20",
-  },
-  {
-    icon: Clock,
-    label: "Response Time",
-    value: "Usually within 24 hours",
-    href: "#",
-    color: "text-sky-400",
-    bg: "bg-sky-500/10 border-sky-500/20",
-  },
-];
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", org: "", message: "" });
@@ -94,80 +61,14 @@ export default function Contact() {
         </motion.div>
 
         {/* ── Main Grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        <div className="max-w-2xl mx-auto">
 
-          {/* ── LEFT: Info Panel ── */}
+          {/* ── Contact Form ── */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="lg:col-span-2 flex flex-col gap-5"
-          >
-            {/* Intro card */}
-            <div className="rounded-3xl p-7 bg-slate-900/50 border border-slate-800 relative overflow-hidden group">
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent group-hover:via-[#D4AF37] transition-all duration-500" />
-              <h3 className="text-xl font-serif font-bold text-white mb-2">
-                Ready to collaborate?
-              </h3>
-              <p className="text-slate-400 text-sm font-light">
-                Reach out directly via email or connect on LinkedIn.
-              </p>
-            </div>
-
-            {/* Contact info cards */}
-            {contactInfo.map((item, idx) => {
-              const Icon = item.icon;
-              const isLink = item.href !== "#";
-              const Wrapper = isLink ? "a" : "div";
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.15 + idx * 0.1, duration: 0.5 }}
-                >
-                  <Wrapper
-                    {...(isLink ? { href: item.href } : {})}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-slate-700 transition-all duration-300 group cursor-default"
-                  >
-                    <div className={`p-2.5 rounded-xl border ${item.bg} ${item.color} flex-shrink-0`}>
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="block text-[10px] text-slate-500 uppercase tracking-widest font-bold">{item.label}</span>
-                      <span className="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">{item.value}</span>
-                    </div>
-                  </Wrapper>
-                </motion.div>
-              );
-            })}
-
-            {/* LinkedIn CTA */}
-            <motion.a
-              href="https://linkedin.com/in/ankitachoudhury"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex items-center gap-4 p-4 rounded-2xl bg-[#0077B5]/10 border border-[#0077B5]/25 hover:border-[#0077B5]/60 hover:bg-[#0077B5]/15 transition-all duration-300 group"
-            >
-              <div className="p-2.5 rounded-xl bg-[#0077B5] flex-shrink-0">
-                <LinkedinFilled className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase tracking-widest font-bold">Connect on LinkedIn</span>
-                <span className="text-sm text-slate-200 font-medium group-hover:text-white transition-colors">2,000+ Followers</span>
-              </div>
-            </motion.a>
-          </motion.div>
-
-          {/* ── RIGHT: Contact Form ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:col-span-3"
+            className="w-full"
           >
             <div className="relative rounded-3xl p-8 md:p-10 bg-slate-900/50 border border-slate-800 overflow-hidden">
               {/* Gold shimmer top */}
