@@ -1,9 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import type { Engine } from "@tsparticles/engine";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Briefcase } from "lucide-react";
 import Tilt from "react-parallax-tilt";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
@@ -19,6 +22,14 @@ const LinkedinIcon = ({ className }: { className?: string }) => (
 
 
 export default function Hero() {
+  const { scrollYProgress } = useScroll();
+  const yText = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const yPhoto = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+  const initParticles = async (engine: Engine) => {
+    await loadSlim(engine);
+  };
+
   return (
     <section
       id="hero"
@@ -32,10 +43,68 @@ export default function Hero() {
       {/* Subtle dot grid */}
       <div className="absolute inset-0 [background-image:radial-gradient(rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
 
+      <ParticlesProvider init={initParticles}>
+        <Particles
+          id="tsparticles"
+          options={{
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onHover: {
+                  enable: true,
+                  mode: "grab"
+                }
+              },
+              modes: {
+                grab: {
+                  distance: 140,
+                  links: {
+                    opacity: 0.5
+                  }
+                }
+              }
+            },
+            particles: {
+              color: {
+                value: "#D4AF37"
+              },
+              links: {
+                color: "#D4AF37",
+                distance: 150,
+                enable: true,
+                opacity: 0.15,
+                width: 1
+              },
+              move: {
+                enable: true,
+                speed: 1.2
+              },
+              number: {
+                density: {
+                  enable: true
+                },
+                value: 40
+              },
+              opacity: {
+                value: 0.25
+              },
+              size: {
+                value: { min: 1, max: 3 }
+              }
+            },
+            detectRetina: true
+          }}
+          className="absolute inset-0 z-0 pointer-events-none"
+        />
+      </ParticlesProvider>
+
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center relative z-10">
 
         {/* ── LEFT COLUMN ── */}
-        <div className="flex flex-col items-start text-left order-2 lg:order-1">
+        <motion.div
+          style={{ y: yText }}
+          className="flex flex-col items-start text-left order-2 lg:order-1"
+        >
 
           {/* Role pill */}
           <motion.div
@@ -134,13 +203,14 @@ export default function Hero() {
               </a>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* ── RIGHT COLUMN — Portrait ── */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          style={{ y: yPhoto }}
           className="order-1 lg:order-2 flex justify-center lg:justify-end relative"
         >
           {/* Outer glow halo */}

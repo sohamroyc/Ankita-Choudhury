@@ -84,37 +84,61 @@ function ExpertiseCard({ category, index, inView }: { category: ExpertiseCategor
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-      className="glass-panel glass-panel-hover rounded-2xl p-8 relative flex flex-col h-full group"
+      className="card-container h-[420px] w-full"
     >
-      {/* Background card accent glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
-      {/* Top Gold Bar */}
-      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent group-hover:via-[#D4AF37] transition-all duration-300 rounded-t-2xl" />
+      <div className="card-3d">
+        {/* Front Face */}
+        <div className="card-front glass-panel rounded-2xl p-8 flex flex-col justify-center items-center text-center group overflow-hidden">
+          {/* Background card accent glow */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Top Gold Bar */}
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent group-hover:via-[#D4AF37] transition-all duration-300 rounded-t-2xl" />
 
-      {/* Icon and Title Header */}
-      <div className="flex items-center gap-4 mb-6">
-        <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-950 transition-colors duration-300 shadow-sm">
-          <IconComponent className="w-6 h-6" />
-        </div>
-        <h3 className="text-2xl font-serif font-bold text-slate-100">{category.title}</h3>
-      </div>
-
-      <p className="text-slate-400 text-sm font-light leading-relaxed mb-8 italic">
-        &ldquo;{category.tagline}&rdquo;
-      </p>
-
-      {/* Subskills List */}
-      <div className="space-y-6 mt-auto">
-        {category.items.map((item, idx) => (
-          <div key={idx} className="flex items-start gap-3.5">
-            <CheckCircle2 className="w-5 h-5 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="text-slate-200 text-sm font-semibold mb-1">{item.name}</h4>
-              <p className="text-slate-400 text-xs font-light leading-relaxed">{item.desc}</p>
-            </div>
+          {/* Icon */}
+          <div className="p-5 bg-slate-900 rounded-2xl border border-slate-800 text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-slate-950 transition-colors duration-300 shadow-md mb-6">
+            <IconComponent className="w-8 h-8" />
           </div>
-        ))}
+
+          {/* Title */}
+          <h3 className="text-2xl font-serif font-bold text-slate-100 mb-4">{category.title}</h3>
+
+          {/* Tagline */}
+          <p className="text-slate-400 text-sm font-light leading-relaxed italic max-w-xs">
+            &ldquo;{category.tagline}&rdquo;
+          </p>
+          
+          {/* Subtle indicator to hover/flip */}
+          <div className="mt-8 text-[10px] uppercase tracking-wider text-[#D4AF37]/60 font-semibold animate-pulse">
+            Hover to view details
+          </div>
+        </div>
+
+        {/* Back Face */}
+        <div className="card-back glass-panel rounded-2xl p-8 flex flex-col justify-between group overflow-hidden border border-[#D4AF37]/20">
+          {/* Top Gold Bar */}
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-transparent rounded-t-2xl" />
+
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-[#D4AF37]/15 rounded-lg text-[#D4AF37]">
+              <IconComponent className="w-5 h-5" />
+            </div>
+            <h3 className="text-lg font-serif font-bold text-slate-100">{category.title}</h3>
+          </div>
+
+          {/* Subskills List */}
+          <div className="space-y-4 my-auto">
+            {category.items.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle2 className="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0" />
+                <div>
+                  <h4 className="text-slate-200 text-xs font-semibold mb-0.5">{item.name}</h4>
+                  <p className="text-slate-400 text-[11px] font-light leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
